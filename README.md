@@ -22,19 +22,19 @@ Or install it yourself as:
 
 Replace word_mix in every rails app files
   
-    rake word_mix:start
+    rake word_mix:convert
 
 Specify a single file path:
     
-    rake word_mix:start TARGET="/complete/path/to/file"
+    rake word_mix:convert TARGET="/complete/path/to/file"
 
 Specify separator to use a custom splitting pattern (default = "\n\n\n"):
 
-    rake word_mix:start SEPARATOR="\n"
+    rake word_mix:convert SEPARATOR="\n"
     
 Specify case_insensitive:
 
-    rake word_mix:start CASE_INSENSITIVE="true"
+    rake word_mix:convert CASE_INSENSITIVE="true"
 
 You can pass more than one option
 
