@@ -1,13 +1,14 @@
 require "word_mix/version"
 module WordMix
-  @root = File.expand_path('../..',__FILE__)
   
+  @root = File.expand_path('../..',__FILE__)
+
   if defined?(Rails)
     require "word_mix/railtie"
-    @root = Rails.root
   end
 
   def self.start(file=nil, separator=nil, case_insensitive=nil)
+    @root = Rails.root.to_s if defined?(Rails)
     @case_insensitive = case_insensitive
     start = Time.now
     
