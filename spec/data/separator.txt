@@ -1,6 +1,1 @@
-al
-bums
-albums
-off
-end
-offend
+al,bums,albums,off,end,offend

@@ -20,7 +20,7 @@ describe WordMix do
     end
 
     it "use custom separator" do
-      WordMix.start(test_path + "/separator.txt", "\n")
+      WordMix.start(test_path + "/separator.txt", nil, ",")
       content = File.read(@build_answer)
       content.should == File.read(test_path + "/separator_answer.txt")
     end
@@ -32,15 +32,21 @@ describe WordMix do
     end 
 
     it "detect case insensitive when specified" do
-      WordMix.start(test_path + "/case_insensitive.txt", nil, true)
+      WordMix.start(test_path + "/case_insensitive.txt", nil, nil, true)
       content = File.read(@build_answer)
       content.should == File.read(test_path + "/case_insensitive_answer.txt")
+    end
+    
+    it "detect custom amount" do
+      WordMix.start(test_path + "/amount.txt", 4)
+      content = File.read(@build_answer)
+      content.should == File.read(test_path + "/amount_answer.txt")
     end
     
     it "use the 6 letters word only one time" do
       WordMix.start(test_path + "/stub.txt")
       content = File.read(@build_answer)
-      list = content.split("\n\n\n")
+      list = content.split("\n")
       list.size.should == 8
     end
   end

@@ -1,0 +1,2 @@
+ha + sh => hash
+al + lo => allo
