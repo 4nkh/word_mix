@@ -7,13 +7,11 @@ module WordMix
     require "word_mix/railtie"
   end
 
-  def self.start(file=nil, separator=nil, case_insensitive=nil)
-    @root = Rails.root.to_s if defined?(Rails)
-    @case_insensitive = case_insensitive
+  def self.start(file=nil, amount=nil, separator=nil, case_insensitive=nil)
     start = Time.now
     
-    separator = separator ? separator : "\n\n\n"
-    data = build_list(file_path(file), separator)
+    data = set_variables(amount, separator, case_insensitive)
+    data = build_list(file_path(file), data)
     mix_words(data)
     File.open(@root + "/answer.txt", "w") { |file| file.puts @result.join }
     puts "#{@result.size} results found"
@@ -24,28 +22,16 @@ module WordMix
   def self.file_path(file)
     file ? file : @root + "/wordlist.txt" 
   end
+  
 private
+
   # Replace word by length
   # It can probably be faster
-  def self.build_list(file, separator)
-    data = set_data
-    
-    list = File.read(file).split(separator)
-    list.each do |word|
-      case word.size
-        when 1 
-          data[1] << word
-        when 2
-          data[2] << word
-        when 3
-          data[3] << word
-        when 4
-          data[4] << word
-        when 5
-          data[5] << word
-        when 6
-          data[6] << word
-      end
+  def self.build_list(file, data)
+    list = File.read(file).split(@separator)
+    list.uniq.each do |word|
+      data[word.size] << word if word.size < @amount and word.size != 0
+      data[@amount] << word if word.size == @amount
     end
     data
   end
@@ -53,12 +39,11 @@ private
   # Loop trough 6 letters word to find a match
   def self.mix_words(data)
     @result = []
-    data[6].each do |word|
-      populate_result(word[0..0], word[1..5], data[1], data[5])
-      populate_result(word[0..1], word[2..5], data[2], data[4])
-      populate_result(word[0..2], word[3..5], data[3], data[3])
-      populate_result(word[0..3], word[4..5], data[4], data[2])
-      populate_result(word[0..4], word[5..5], data[5], data[1])
+    data[@amount].each do |word|
+      big = @amount-2
+      (0..big).each do |i|
+        populate_result(word[0..i], word[i+1..big+1], data[i+1], data[big+1 - i])
+      end
     end
     @result   
   end
@@ -68,21 +53,33 @@ private
     if @case_insensitive
       if match_one.any?{ |s| s.downcase == first.downcase } and match_two.any?{ |s| s.downcase == second.downcase }
         match_one.any?{ |s| s.downcase == first.downcase ? first = s : nil} and match_two.any?{ |s| s.downcase == second.downcase ? second = s : nil}
-        @result << "#{first} + #{second} => #{word}\n\n\n"
+        @result << "#{first} + #{second} => #{word}\n"
       end
     else  
+      # puts match_one
+      # puts match_two
       if match_one.include? first and match_two.include? second
-        @result << "#{first} + #{second} => #{word}\n\n\n"
+        @result << "#{first} + #{second} => #{word}\n"
       end
     end  
   end
   
   # Build an array for each word length
   def self.set_data(data=[])
-    (1..6).each do |size|
+    (1..@amount).each do |size|
       data[size] = []
     end
     data
-  end  
-private_class_method :build_list, :mix_words, :populate_result, :set_data
-end  
+  end
+  
+  # Set global variables and return array of arrays
+  def self.set_variables(amount, separator, case_insensitive)
+    @root = Rails.root.to_s if defined?(Rails)
+    @case_insensitive = case_insensitive
+    @amount = amount ? amount.to_i : 6
+    @separator = separator ? separator : "\n"
+    data = set_data
+  end
+   
+private_class_method :build_list, :mix_words, :populate_result, :set_data, :set_variables
+end

@@ -1,7 +1,14 @@
 # WORD_MIX
 
-combine small word to get a word of six characters -> 
+PLEASE WATCH WORD_MIX-0.0.7 FOR THE EXAMEN
 
+I'm tunning the program because
+I have notice an unexpected amount of download :D 
+
+combine 2 small word to get a word of (N) characters -> 
+
+    default is 6
+    
     al + bums => albums
   
 ## Installation
@@ -27,6 +34,10 @@ Replace word_mix in every rails app files
 Specify a single file path:
     
     rake word_mix:convert TARGET="/complete/path/to/file"
+    
+Specify a custom amount of letter (default = 6):
+
+    rake word_mix:convert AMOUNT=6
 
 Specify separator to use a custom splitting pattern (default = "\n\n\n"):
 
