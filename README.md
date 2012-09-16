@@ -26,7 +26,7 @@ Replace word_mix in every rails app files
   
     rake word_mix:convert
 
-Specify a single file path:
+Specify a single file path ( default = Rails.root + "/wordlist.txt"):
     
     rake word_mix:convert TARGET="/complete/path/to/file"
     
@@ -34,7 +34,7 @@ Specify a custom amount of letter (default = 6):
 
     rake word_mix:convert AMOUNT=6
 
-Specify separator to use a custom splitting pattern (default = "\n\n\n"):
+Specify separator to use a custom splitting pattern ( default = "\n\" ):
 
     rake word_mix:convert SEPARATOR="\n"
     
@@ -65,10 +65,14 @@ VERSION 0.0.9
   
 VERSION 0.1.0
  
-    remove unused file and add correction to README.md 
+    remove unused file and add correction to README.md
+    
+VERSION 1.1.0
+
+    refactor + add exception     
   
   
 You could experiment permission issue if not used properly
  
-Go see hash_rocket gem to see more gem flexibility
+Go see hash_rocket gem to see more flexibility using regex:
 https://github.com/4nkh/hash_rocket
