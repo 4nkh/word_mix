@@ -2,9 +2,7 @@
 
 PLEASE WATCH WORD_MIX-0.0.7 FOR THE TEST (see details in NOTES...)
 
-combine 2 small word to get a word of (N) characters -> 
-
-    default is 6
+combine 2 small word to get a word of (N) characters: 
     
     al + bums => albums
   
@@ -50,25 +48,27 @@ You can pass more than one option
   
 VERSION 0.0.7 ... 
   
-  KATA release of 2:30 h
+    KATA release after 2:30 h
 
-========================================================
+
 
 I saw an unexpected amount of download so I'm tuning the gem a bit :D
   
 VERSION 0.0.8 ...
   
-  new AMOUNT feature
+    new AMOUNT feature
   
 VERSION 0.0.9
 
-  optimize the code by using hash instead of array
-  fix test  
+    optimize the code by using hash instead of array
+    fix test  
   
-      
-  
-  
-  You could experiment permission issue if not used properly
+VERSION 0.1.0
  
-  Go see hash_rocket gem to see more gem flexibility
-  https://github.com/4nkh/hash_rocket
+    remove unused file and add correction to README.md 
+  
+  
+You could experiment permission issue if not used properly
+ 
+Go see hash_rocket gem to see more gem flexibility
+https://github.com/4nkh/hash_rocket
