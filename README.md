@@ -34,7 +34,7 @@ Specify a custom amount of letter (default = 6):
 
     rake word_mix:convert AMOUNT=6
 
-Specify separator to use a custom splitting pattern ( default = "\n\" ):
+Specify separator to use a custom splitting pattern ( default = "\n" ):
 
     rake word_mix:convert SEPARATOR="\n"
     
