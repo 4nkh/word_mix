@@ -1,7 +1,5 @@
 # WORD_MIX
 
-PLEASE WATCH WORD_MIX-0.0.7 FOR THE TEST (see details in NOTES...)
-
 combine 2 small word to get a word of (N) characters: 
     
     al + bums => albums
@@ -45,32 +43,7 @@ Specify case_insensitive:
 You can pass more than one option
 
 ## NOTES
-  
-VERSION 0.0.7 ... 
-  
-    KATA release after 2:30 h
-
-
-
-I saw an unexpected amount of download so I'm tuning the gem a bit :D
-  
-VERSION 0.0.8 ...
-  
-    new AMOUNT feature
-  
-VERSION 0.0.9
-
-    optimize the code by using hash instead of array
-    fix test  
-  
-VERSION 0.1.0
- 
-    remove unused file and add correction to README.md
-    
-VERSION 1.1.0
-
-    refactor + add exception     
-  
+   
   
 You could experiment permission issue if not used properly
  
