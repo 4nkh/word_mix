@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-Replace word_mix in every rails app files
+Rake task:
   
     rake word_mix:convert
 
