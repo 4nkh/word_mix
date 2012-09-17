@@ -46,6 +46,3 @@ You can pass more than one option
    
   
 You could experiment permission issue if not used properly
- 
-Go see hash_rocket gem to see more flexibility using regex:
-https://github.com/4nkh/hash_rocket
